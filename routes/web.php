@@ -1,34 +1,36 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index"); 
-Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name("product.create"); 
-Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name("product.save"); 
-Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show"); 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index"); 
-Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index");
-Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
-Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name("cart.removeAll");
-Route::get('/image', 'App\Http\Controllers\ImageController@index')->name("image.index");
-Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name("image.save");
-Route::get('/image-not-di', 'App\Http\Controllers\ImageNotDIController@index')->name("imagenotdi.index");
-Route::post('/image-not-di/save', 'App\Http\Controllers\ImageNotDIController@save')->name("imagenotdi.save");
-Route::get('/about', function () { 
 
-    $data1 = "About us - Online Store"; 
+Route::get('/humans', 'App\Http\Controllers\HumanController@index')->name('human.index');
+Route::get('/humans/create', 'App\Http\Controllers\HumanController@create')->name('human.create');
+Route::post('/humans', 'App\Http\Controllers\HumanController@store')->name('human.store');
+Route::get('/humans/battle', 'App\Http\Controllers\HumanController@battle')->name('human.battle');
+Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
+Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('product.create');
+Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name('product.save');
+Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
+Route::get('/image', 'App\Http\Controllers\ImageController@index')->name('image.index');
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('image.save');
+Route::get('/image-not-di', 'App\Http\Controllers\ImageNotDIController@index')->name('imagenotdi.index');
+Route::post('/image-not-di/save', 'App\Http\Controllers\ImageNotDIController@save')->name('imagenotdi.save');
+Route::get('/about', function () {
 
-    $data2 = "About us"; 
+    $data1 = 'About us - Online Store';
 
-    $description = "This is an about page ..."; 
+    $data2 = 'About us';
 
-    $author = "Developed by: Your Name"; 
+    $description = 'This is an about page ...';
 
-    return view('home.about')->with("title", $data1) 
+    $author = 'Developed by: Your Name';
 
-      ->with("subtitle", $data2) 
+    return view('home.about')->with('title', $data1)
+        ->with('subtitle', $data2)
+        ->with('description', $description)
+        ->with('author', $author);
 
-      ->with("description", $description) 
-
-      ->with("author", $author); 
-
-})->name("home.about");
+})->name('home.about');

@@ -1,25 +1,17 @@
-<?php 
+<?php
 
-  
+namespace App\Http\Controllers;
 
-namespace App\Http\Controllers; 
+use Illuminate\View\View;
 
- 
+class HomeController extends Controller
+{
+    public function index(): View
+    {
 
-use Illuminate\View\View; 
+        return view('home.index')->with('viewData', [
+            'title' => 'Aura farmers',
+        ]);
 
-  
-
-class HomeController extends Controller 
-
-{ 
-
-    public function index(): View 
-
-    { 
-
-        return view('home.index'); 
-
-    } 
-
-} 
+    }
+}
